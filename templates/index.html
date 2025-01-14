@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home page
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Speech recognition service prototype</h1>
+            <p class="fs-5 text-body-secondary">Speech recognition service prototype based on OpenAI's Whisper model</p>
+        </div>
+    </header>
+    <div id="speechContainer">
+        <h2>Upload your audio file</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="col-sm-6">
+              <input type="file" class="form-control" name="file" accept=".wav"/>
+              <h2>Select speaker count</h2>
+              <input type="text" name="speakerCount" class="form-control" id="speakerCount" placeholder="Number of speakers" value="1" required>
+              <h2>Select Whisper model</h2>
+            </div>
+                <select name="whisperModels" id="whisperModels">
+                   <option value="tiny">tiny</option>
+                   <option value="base">base</option>
+                   <option value="small">small</option>
+                   <option value="medium">medium</option>
+                   <option value="large">large</option>
+                   <option value="large-v1">large-v1</option>
+                   <option value="large-v2">large-v2</option>
+                   <option value="large-v3" selected>large-v3</option>
+                </select>
+            <div class="my-3">
+                <h2>Select Whisper language</h2>
+                <fieldset>
+                  <div class="form-check">
+                    <input type="radio" id="ru" name="lang" value="ru" class="form-check-input" checked required />
+                    <label for="ru">Russian</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" id="eng" name="lang" value="en" class="form-check-input" />
+                    <label for="eng">English</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" id="none" name="lang" value=None class="form-check-input" />
+                    <label for="none">Detect automatically</label>
+                  </div>
+                </fieldset>
+            </div>
+            <input type="submit" class="btn btn-primary rounded-pill px-3" value="Transcribe+diarize">
+        </form>
+        {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Transcript</h1>
+            <span style="white-space: pre-line">{{transcript}}</span>
+            <h2>Model run results:</h2>
+            <p>Transcription time: {{ transcription_time }} seconds</p>
+            <p>Transcription time/duration ratio: {{ transcription_ratio }} </p>
+            <p>Diarization time: {{ diarization_time }} seconds</p>
+            <p>Diarization time/duration: {{ diarization_ratio }} </p>
+            <p>Duration of the audio file: {{ audio_duration }} seconds</p>
+            <h2>Text segments:</h2>
+            <span style="white-space: pre-line">{{summarization}}</span>
+            <p>Text clusterization and summarization: {{ sum_time }} seconds</p>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}
