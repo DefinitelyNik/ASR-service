@@ -2,11 +2,11 @@
 ## 📣 Introduction
 The purpose of the service is to provide a transcript and summary of audio recordings from meetings. The transcript will be broken down into semantic parts, with time stamps and speaker information, and abstracts for each part. There is also a web-service which can be used to test and demonstrate how the whole ASR-system works
 ## ⚙ Technology stack
-[OpenAI Whisper models](https://github.com/openai/whisper) for transcription
-[Pyannote model](https://github.com/pyannote/pyannote-audio) for diarization
-sberbank-ai/ruRoberta-large model for word embeddings
-[cointegrated/rut5-base-absum model](https://huggingface.co/cointegrated/rut5-base-absum) for summarization
-Flask framework for web-interface
+* [OpenAI Whisper models](https://github.com/openai/whisper) for transcription
+* [Pyannote model](https://github.com/pyannote/pyannote-audio) for diarization
+* sberbank-ai/ruRoberta-large model for word embeddings
+* [cointegrated/rut5-base-absum model](https://huggingface.co/cointegrated/rut5-base-absum) for summarization
+* Flask framework for web-interface
 ## 🛠 Installation
 <u>Whole project was developed and tested with Python 3.10</u>
 1. Clone repository: 
