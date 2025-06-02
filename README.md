@@ -21,5 +21,3 @@ Flask framework for web-interface
 ```
 pip install Flask librosa numpy dotenv matplotlib scikit-learn transformers
 ```
-## 📺 Service demonstration
-![demo](https://media1.tenor.com/m/NgFQPJnM-AgAAAAC/cat.gif)
